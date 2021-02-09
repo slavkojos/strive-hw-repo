@@ -58,9 +58,9 @@ const addCSSclass = (cssclass) => {
     
     return console.log("class added", cssclass);
 }
-
+const imagesArray = document.getElementsByTagName("img")
 const setImagesToInvisible = () => {
-    const imagesArray = document.getElementsByTagName("img")
+    
     console.log(imagesArray)
     for (let i=0;i<imagesArray.length;i++) {
         imagesArray[i].classList.toggle("invisible")
@@ -74,13 +74,30 @@ function randomHexCode() {
 
 const colorPrices = () => {
     const prices = document.getElementsByClassName("product-price")
-    const chosenColor = randomHexCode();
+    //const chosenColor = randomHexCode();
     for (let i=0;i<prices.length;i++) {
-        prices[i].style.color = chosenColor;
+        prices[i].style.color = randomHexCode();
     }
     
 
 }
+
+// TETIANA EXTRAS :)
+
+for (let i=0;i<imagesArray.length;i++) {
+    imagesArray[i].onmouseover = function(event) {
+        event.target.style.opacity = 0;
+        console.log("toggled invisible");
+    }
+
+    imagesArray[i].onmouseout = function(event) {
+        event.target.style.opacity = 1;
+        console.log("toggled visible");
+    }
+} 
+
+
+
 
 
 
