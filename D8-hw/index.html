@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body class="py-5">
+
+    <div class="card text-white bg-primary mb-3 mx-auto" style="max-width: 40rem;">
+        <div class="card-header d-flex justify-content-between">
+            <div class="flex-left-align">
+                <h2 class="fw-bold fs-1 text-start">TASK LIST</h2>
+            </div>
+            <div class="flex-right-align">
+                <i id="atoz" class="btn btn-outline-light fas fa-sort-alpha-down fa-2x mx-3 hvr-icon-pop"></i>
+                <i id="ztoa" class="btn btn-outline-light fas fa-sort-alpha-down-alt fa-2x mx-3 hvr-icon-pop"></i>
+            </div>
+            
+        </div>
+        <div class="card-body">
+            <ul id="tasklist-ul" class="list-group p-0">
+                <div class="input-group mb-3">
+                    <input id="new-list-item" type="text" class="form-control" placeholder="Add new task here" aria-label="Recipient's username" aria-describedby="button-addon2" value="">
+                    <button id="add-new-item" class="btn btn-outline-light" type="button" id="button-addon2"><i class="fas fa-plus-circle"></i></button>
+                  </div>
+                  <div id="list-body">
+
+                  </div>
+                
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+    <script src="/index.js"></script>
+</body>
+
+</html>
