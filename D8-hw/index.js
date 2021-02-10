@@ -8,6 +8,7 @@ const zToA =document.getElementById('ztoa')
 const addNewItemButton = document.getElementById("add-new-item")
 //console.log(addNewItemButton);
 let listItemArray = [];
+listItemArray.push("buy bread")
 
 
 
@@ -42,7 +43,10 @@ const populateList = function () {
 
 const addNewItemToList = function () {
     console.log(inputNew.value)
-    listItemArray.push(inputNew.value);
+    if (inputNew.value !=="") {
+        listItemArray.push(inputNew.value);
+    }
+    
     inputNew.value = ""
     listBody.innerHTML=""
     populateList();
@@ -73,9 +77,14 @@ const sortZToA = function () {
     listBody.innerHTML=""
     populateList();
 }
+populateList()
 
-
-
+inputNew.addEventListener('keyup', function(event) {
+    if (event.key ==="Enter") {
+        event.preventDefault();
+        addNewItemToList();
+    }
+})
 addNewItemButton.addEventListener('click', addNewItemToList)
 aToZ.addEventListener("click",sortAtoZ)
 zToA.addEventListener("click",sortZToA)
