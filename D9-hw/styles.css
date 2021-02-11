@@ -1,0 +1,25 @@
+#bingo-body {
+    display:flex;
+    flex-direction:column;
+    height:90vh;
+    flex-wrap: wrap;
+}
+
+
+
+.bingo-field {
+    display: inline-block;
+    height:50px;
+    width:50px;
+    background-color:rgb(109, 200, 236)
+    
+    
+}
+
+.bingo-field h4 {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 32px;
+}
+
+
