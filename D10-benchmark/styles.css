@@ -1,0 +1,20 @@
+body {
+    background-color:#181a1b;
+}
+
+
+.card {
+    width:50%;
+    margin: 20px auto;
+}
+
+.next-buton {
+    color:white;
+}
+.correct {
+    background-color: green;;
+}
+
+.wrong {
+    background-color: red;
+}
