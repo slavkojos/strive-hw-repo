@@ -69,6 +69,9 @@ const quizData = [{
     "correct_answer": "Java",
     "incorrect_answers": ["Python", "C", "Jakarta"]
 }]
+
+
+
 const questionTitle = document.getElementById("question")
 const options = document.getElementById("options")
 const quizDescription = document.querySelector(".card-text")
@@ -117,6 +120,14 @@ function loadNextQuestion() {
         questionNumber++;
         loadQuestion();
     } else {
+        const yay = new Audio("yay.mp3")
+        yay.volume = 0.6;
+        yay.playbackRate = 1.5
+        yay.play()
+        confetti({
+            spread: 500,
+            particleCount: 2000
+          });
         questionTitle.innerText = `You have ${totalScore} correct answers out of ${quizData.length}`
 
     }
