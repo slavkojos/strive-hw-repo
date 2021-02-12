@@ -154,6 +154,7 @@ function checkAnswer(event) { //function for handling correct and wrong answer
     }
     const nextButton = document.createElement("button"); //after the user has chosen an answer, display the NEXT QUESTION button
     options.appendChild(nextButton) //append it to same container as the answers
+    nextButton.innerText="NEXT QUESTION" //add the content to the button
     nextButton.classList.add("btn", "btn-outline-dark", "next-button", "mx-2", "my-3", "d-block", "text-center", "m-auto", "fw-bolder", "px-3", "btn-primary") //just some bootstrap classes for styling
     nextButton.addEventListener("click", loadNextQuestion) //add the event listener to load next question when clicked
 }
