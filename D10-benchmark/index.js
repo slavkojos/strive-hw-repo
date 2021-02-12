@@ -78,77 +78,76 @@ quizDescription.innerText = `Category: ${quizData[0].category}`
 
 let questionNumber = 0
 let answers = [];
+
 function loadQuestion() {
-    questionTitle.innerText=quizData[questionNumber]["question"]
-    
+    questionTitle.innerText = quizData[questionNumber]["question"]
+
     for (let i = 0; i < quizData[questionNumber].incorrect_answers.length; i++) {
         answers.push(quizData[questionNumber].incorrect_answers[i])
     }
     answers.push(quizData[questionNumber].correct_answer)
     shuffleAnswers(answers);
     for (let i = 0; i < answers.length; i++) {
-        console.log("hello",i);
+        console.log("hello", i);
         const answerButton = document.createElement("button");
         options.appendChild(answerButton)
-        answerButton.classList.add("btn","btn-outline-dark","answer-butons","mx-2","my-3" ,"d-block","text-center","m-auto","fw-bolder","px-3")
-        answerButton.innerText=answers[i];
-        answerButton.addEventListener("click",checkAnswer)
+        answerButton.classList.add("btn", "btn-outline-dark", "answer-butons", "mx-2", "my-3", "d-block", "text-center", "m-auto", "fw-bolder", "px-3")
+        answerButton.innerText = answers[i];
+        answerButton.addEventListener("click", checkAnswer)
     }
     console.log(answers);
 }
 
-window.onload=loadQuestion();
+window.onload = loadQuestion();
 
 function shuffleAnswers(array) {
-    for (let i = array.length - 1; i > 0; i--){
+    for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * i)
         const temp = array[i]
         array[i] = array[j]
         array[j] = temp
-      }
+    }
 }
 
 function loadNextQuestion() {
-    if (questionNumber < quizData.length-1) {
+    options.innerHTML = ""
+    if (questionNumber < quizData.length - 1) {
         console.log("time for new question");
         answers = [];
-        options.innerHTML=""
         questionNumber++;
         loadQuestion();
-    } else  {
-        questionTitle.innerText=`You have ${totalScore} correct answers out of ${quizData.length}`
-        options.innerHTML=""
-    }   
+    } else {
+        questionTitle.innerText = `You have ${totalScore} correct answers out of ${quizData.length}`
+
+    }
 }
 
 let totalScore = 0;
+
 function checkAnswer(event) {
-    console.log("ok",event.target.parentNode.childNodes)
-    for (let i=1;i<event.target.parentNode.childNodes.length;i++) {
-        event.target.parentNode.childNodes[i].removeEventListener("click",checkAnswer)
-        
+    console.log("ok", event.target.parentNode.childNodes)
+    for (let i = 0; i < event.target.parentNode.childNodes.length; i++) {
+        event.target.parentNode.childNodes[i].removeEventListener("click", checkAnswer) //Prevent user from selecting buttons after picking one
     }
-    
     console.log(event.target.innerText);
     if (event.target.innerText === quizData[questionNumber].correct_answer) {
-        const correct = new Audio ("Noice.mp3")
-        correct.volume=0.6;
+        const correct = new Audio("Noice.mp3")
+        correct.volume = 0.6;
+        correct.playbackRate = 1.5
         correct.play();
         console.log("correct!");
         totalScore++;
         event.target.classList.add("correct")
     } else {
-        const wrong = new Audio ("wrong.mp3")
-        wrong.volume=0.6;
+        const wrong = new Audio("wrong.mp3")
+        wrong.volume = 0.6;
+        wrong.playbackRate = 1.5
         wrong.play();
         event.target.classList.add("wrong")
     }
     const nextButton = document.createElement("button");
     options.appendChild(nextButton)
-    nextButton.classList.add("btn","btn-outline-dark","next-button","mx-2","my-3" ,"d-block","text-center","m-auto","fw-bolder","px-3","btn-primary")
+    nextButton.classList.add("btn", "btn-outline-dark", "next-button", "mx-2", "my-3", "d-block", "text-center", "m-auto", "fw-bolder", "px-3", "btn-primary")
     nextButton.innerText = "NEXT QUESTION"
-    nextButton.addEventListener("click",loadNextQuestion)
+    nextButton.addEventListener("click", loadNextQuestion)
 }
-
-
-
