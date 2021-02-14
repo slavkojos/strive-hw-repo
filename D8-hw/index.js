@@ -3,20 +3,23 @@ const inputNew = document.getElementById('new-list-item');
 const listBody = document.getElementById('list-body')
 const aToZ = document.getElementById('atoz');
 const deleteAll = document.getElementById("deleteAll")
+const dateContainer = document.getElementById("date-container")
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+    return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
 
 
 const addNewItemButton = document.getElementById("add-new-item")
 let listItemArray = [];
-const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
-const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 const todayDate = new Date()
-listItemArray.push(`Today is ${months[todayDate.getMonth()]} ${todayDate.getDate()}th, ${days[todayDate.getDay()]}`)
+//listItemArray.push(`Today is ${months[todayDate.getMonth()]} ${todayDate.getDate()}th, ${days[todayDate.getDay()]}`)
+listItemArray.push("Hey welcome to your tasklist 👋")
+dateContainer.innerText = `Today is ${months[todayDate.getMonth()]} ${todayDate.getDate()}th, ${days[todayDate.getDay()]}`
 
 
 
@@ -70,16 +73,16 @@ const deleteItemFromList = function (event) {
 const sortList = function (event) {
     if (event.target.classList.contains('fa-sort-alpha-down')) {
         console.log("oke");
-        event.target.classList.replace("fa-sort-alpha-down","fa-sort-alpha-down-alt")
+        event.target.classList.replace("fa-sort-alpha-down", "fa-sort-alpha-down-alt")
         listItemArray.sort();
         listItemArray.reverse();
     } else if (event.target.classList.contains('fa-sort-alpha-down-alt')) {
         console.log("oke2")
-        event.target.classList.replace("fa-sort-alpha-down-alt","fa-sort-alpha-down")
+        event.target.classList.replace("fa-sort-alpha-down-alt", "fa-sort-alpha-down")
         listItemArray.sort();
     }
     populateList();
-    }
+}
 
 
 window.onload = populateList()
@@ -92,7 +95,7 @@ inputNew.addEventListener('keyup', function (event) {
 })
 addNewItemButton.addEventListener('click', addNewItemToList)
 aToZ.addEventListener("click", sortList)
-deleteAll.addEventListener("click",function() {
+deleteAll.addEventListener("click", function () {
     listItemArray = [];
     populateList()
 })
