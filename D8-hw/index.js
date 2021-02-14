@@ -18,7 +18,6 @@ const populateList = function () {
         const newListItemDiv = document.createElement('div');
         const newListItemLi = document.createElement('li');
         const trashButton = document.createElement('i')
-        console.log(inputNew.value)
 
         trashButton.setAttribute("id", "trash-button");
 
@@ -37,12 +36,11 @@ const populateList = function () {
         //setting value of new list item
         const textContent = document.createTextNode(elem);
         newListItemLi.appendChild(textContent);
-        console.log(listBody);
     }
 }
 
 const addNewItemToList = function () {
-    console.log(inputNew.value)
+
     if (inputNew.value.trim() !== "") {
         listItemArray.push(inputNew.value.trim());
     }
@@ -52,9 +50,6 @@ const addNewItemToList = function () {
 }
 
 const deleteItemFromList = function (event) {
-    console.log("event", event);
-    console.log(event.target.previousElementSibling.childNodes[0].nodeValue)
-    //event.target.parentNode.parentNode.removeChild(event.target.parentNode)
     for (let i = 0; i < listItemArray.length; i++) {
         if (event.target.previousElementSibling.childNodes[0].nodeValue === listItemArray[i]) {
             listItemArray.splice(i, 1)
@@ -73,7 +68,8 @@ const sortZToA = function () {
     listItemArray.reverse();
     populateList();
 }
-populateList()
+
+window.onload = populateList()
 
 inputNew.addEventListener('keyup', function (event) {
     if (event.key === "Enter") {
