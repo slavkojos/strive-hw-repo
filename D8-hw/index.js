@@ -2,12 +2,21 @@ const tasklistUL = document.getElementById('tasklist-ul');
 const inputNew = document.getElementById('new-list-item');
 const listBody = document.getElementById('list-body')
 const aToZ = document.getElementById('atoz');
-const zToA = document.getElementById('ztoa')
+const deleteAll = document.getElementById("deleteAll")
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 
 
 const addNewItemButton = document.getElementById("add-new-item")
 let listItemArray = [];
-listItemArray.push("buy bread")
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+const todayDate = new Date()
+listItemArray.push(`Today is ${months[todayDate.getMonth()]} ${todayDate.getDate()}th, ${days[todayDate.getDay()]}`)
 
 
 
@@ -58,16 +67,20 @@ const deleteItemFromList = function (event) {
     populateList();
 }
 
-const sortAtoZ = function () {
-    listItemArray.sort();
+const sortList = function (event) {
+    if (event.target.classList.contains('fa-sort-alpha-down')) {
+        console.log("oke");
+        event.target.classList.replace("fa-sort-alpha-down","fa-sort-alpha-down-alt")
+        listItemArray.sort();
+        listItemArray.reverse();
+    } else if (event.target.classList.contains('fa-sort-alpha-down-alt')) {
+        console.log("oke2")
+        event.target.classList.replace("fa-sort-alpha-down-alt","fa-sort-alpha-down")
+        listItemArray.sort();
+    }
     populateList();
-}
+    }
 
-const sortZToA = function () {
-    listItemArray.sort();
-    listItemArray.reverse();
-    populateList();
-}
 
 window.onload = populateList()
 
@@ -78,5 +91,8 @@ inputNew.addEventListener('keyup', function (event) {
     }
 })
 addNewItemButton.addEventListener('click', addNewItemToList)
-aToZ.addEventListener("click", sortAtoZ)
-zToA.addEventListener("click", sortZToA)
+aToZ.addEventListener("click", sortList)
+deleteAll.addEventListener("click",function() {
+    listItemArray = [];
+    populateList()
+})
