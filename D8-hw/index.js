@@ -43,8 +43,8 @@ const populateList = function () {
 
 const addNewItemToList = function () {
     console.log(inputNew.value)
-    if (inputNew.value !== "") {
-        listItemArray.push(inputNew.value);
+    if (inputNew.value.trim() !== "") {
+        listItemArray.push(inputNew.value.trim());
     }
 
     inputNew.value = ""
