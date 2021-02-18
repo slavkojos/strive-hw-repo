@@ -60,6 +60,7 @@ for (let i = 0; i < data.length; i++) {}
 const nameListUl = document.getElementById("name-list-ul");
 const generateTeamsButton = document.getElementById("generate-teams-button");
 const numberOfTeamsInput = document.getElementById("numberofteams");
+const counterDiv = document.getElementById("counter");
 function populateNameList() {
   for (let i = 0; i < namelist.length; i++) {
     const nameLi = document.createElement("li");
@@ -84,24 +85,27 @@ function determineNumberOfTeams() {
 const tableContainer = document.getElementById("table-content");
 const alphabet =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+const namelistLength = namelist.length;
 function generateTables() {
   generateButton.removeEventListener("click", generateTables);
-  generateButton.style.visibility = "hidden";
-  const namelistLength = namelist.length;
+  counter.style.display = "none";
+
   for (let i = 0; i < determineNumberOfTeams(); i++) {
     console.log("new table");
     const column = document.createElement("div");
     const table = document.createElement("table");
     tableContainer.appendChild(column);
+    tableContainer.classList.add("my-4");
     column.appendChild(table);
-    column.classList.add("border", "p-2");
+    table.classList.add("table", "table-dark", "table-striped", "table-hover");
+    column.classList.add("border", "p-2", "col");
     const tableHead = document.createElement("thead");
     table.appendChild(tableHead);
     const tableHeadRow = document.createElement("tr");
     tableHead.appendChild(tableHeadRow);
     const th = document.createElement("th");
     tableHeadRow.appendChild(th);
+    th.classList.add("bg-danger");
     th.setAttribute("scope", "col");
     th.innerText = `TEAM ${alphabet[i]}`;
     const tbody = document.createElement("tbody");
@@ -120,6 +124,7 @@ function generateTables() {
         tbody.appendChild(bodyrow);
         const td = document.createElement("td");
         bodyrow.appendChild(td);
+        td.classList.add("text-nowrap");
         const randomNumber = generateRandomNumber(namelist.length) - 1;
         console.log("namelist length", namelist.length);
         console.log("random number", randomNumber);
@@ -160,6 +165,11 @@ function handleCounter(event) {
     subtractButton.style.visibility = "hidden";
   } else {
     subtractButton.style.visibility = "visible";
+  }
+  if (parseInt(spanCounter.innerText) >= namelistLength / 2) {
+    addButton.style.visibility = "hidden";
+  } else {
+    addButton.style.visibility = "visible";
   }
 }
 const generateButton = document.getElementById("generate");
