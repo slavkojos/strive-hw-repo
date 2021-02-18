@@ -245,7 +245,7 @@ const allAlbumsRow = document.getElementsByClassName("row")[0];
 allAlbumsRow.classList.add("d-flex", "justify-content-between");
 
 function populateAllAlbums() {
-  for (let i = 0; i < albumData.length / 2 + 1; i++) {
+  for (let i = 0; i < 20; i++) {
     const albumContainer = document.createElement("div");
     const albumImg = document.createElement("div");
     const albumInfo = document.createElement("div");
@@ -258,11 +258,21 @@ function populateAllAlbums() {
     albumInfo.appendChild(albumAuthor);
 
     //classes
-    albumContainer.classList.add("col-6", "col-md-4", "col-lg-3", "my-3");
-    albumImg.style.width = "200px";
-    albumImg.style.height = "250px";
-    albumImg.classList.add("shadow-lg");
-    albumImg.style.backgroundImage = `url(${albumData[i].download_url}.webp)`;
+    albumContainer.classList.add(
+      "col-6",
+      "col-md-4",
+      "col-lg-3",
+      "d-flex",
+      "flex-column",
+      "align-items-center",
+      "my-3"
+    );
+    albumImg.style.height = "300px";
+    albumImg.classList.add("shadow-lg", "rounded-lg", "container");
+    albumImg.style.backgroundImage = `url(${albumData[i].download_url.slice(
+      0,
+      30
+    )}/300/300.webp)`;
     albumImg.style.backgroundSize = "cover";
 
     albumAuthor.innerText = `${albumData[i].author}`;
