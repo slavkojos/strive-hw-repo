@@ -106,7 +106,7 @@ function generateTables() {
     th.innerText = `TEAM ${alphabet[i]}`;
     const tbody = document.createElement("tbody");
     table.appendChild(tbody);
-    const numberofTeamMembers = Math.round(
+    const numberofTeamMembers = Math.floor(
       namelistLength / determineNumberOfTeams()
     );
     console.log("numberofteammembers", numberofTeamMembers);
