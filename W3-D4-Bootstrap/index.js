@@ -80,10 +80,14 @@ function determineNumberOfTeams() {
   console.log("number of teams", Math.abs(parseInt(spanCounter.innerText)));
   return Math.abs(parseInt(spanCounter.innerText));
 }
+
 const tableContainer = document.getElementById("table-content");
 const alphabet =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
 function generateTables() {
+  generateButton.removeEventListener("click", generateTables);
+  generateButton.style.visibility = "hidden";
   const namelistLength = namelist.length;
   for (let i = 0; i < determineNumberOfTeams(); i++) {
     console.log("new table");
@@ -162,4 +166,4 @@ const generateButton = document.getElementById("generate");
 
 addButton.addEventListener("click", handleCounter);
 subtractButton.addEventListener("click", handleCounter);
-generate.addEventListener("click", generateTables);
+generateButton.addEventListener("click", generateTables);
