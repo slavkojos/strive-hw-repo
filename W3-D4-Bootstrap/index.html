@@ -27,28 +27,16 @@
           id="name-list-ul"
           class="list-group container-md mx-auto text-dark text-center overflow-auto"
         ></ul>
-        <div class="input-group mb-3 mx-auto my-5 w-25">
-          <label for="numberofteams" class="pt-1 mx-2 font-weight-bold"
-            >Number of teams</label
-          >
-          <input
-            id="numberofteams"
-            type="number"
-            class="form-control"
-            placeholder="Number of teams"
-            aria-label="Number-of-teams"
-            aria-describedby="button-addon2"
-          />
-          <div class="input-group-append">
-            <button
-              id="generate-teams-button"
-              class="btn btn-danger"
-              type="button"
-              id="button-addon2"
-            >
-              Generate teams
-            </button>
-          </div>
+        <div id="counter">
+          <button id="subtract" type="button" class="btn btn-danger">-</button>
+          <span id="span-counter" class="mx-3">3</span>
+          <button id="add" type="button" class="btn btn-danger">+</button>
+          <button id="generate" type="button" class="mx-3 btn btn-danger">
+            Generate
+          </button>
+        </div>
+        <div id="teams-container" class="table-container container">
+          <div id="table-content" class="row"></div>
         </div>
       </div>
     </div>

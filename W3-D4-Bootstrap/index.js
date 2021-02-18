@@ -51,25 +51,115 @@ const data = [
   { first_name: "Ailbert", last_name: "Lestor" },
 ];
 
-const nameList = [];
+const namelist = [];
+
+for (let i = 0; i < data.length; i++) {
+  namelist[i] = data[i];
+}
+for (let i = 0; i < data.length; i++) {}
 const nameListUl = document.getElementById("name-list-ul");
 const generateTeamsButton = document.getElementById("generate-teams-button");
 const numberOfTeamsInput = document.getElementById("numberofteams");
 function populateNameList() {
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < namelist.length; i++) {
     const nameLi = document.createElement("li");
     nameListUl.appendChild(nameLi);
-    nameLi.innerText = data[i].first_name + " " + data[i].last_name;
+    nameLi.innerText = namelist[i].first_name + " " + namelist[i].last_name;
     nameLi.classList.add("list-group-item");
   }
 }
 
 window.onload = populateNameList();
+//window.onload = teamNumberInput();
 
-function determineNumberOfTeams() {
-  return numberOfTeamsInput.value;
+function generateRandomNumber(number) {
+  return Math.floor(Math.random() * (number - 1 + 1)) + 1;
 }
 
-function generateTeams() {}
+function determineNumberOfTeams() {
+  console.log("number of teams", Math.abs(parseInt(spanCounter.innerText)));
+  return Math.abs(parseInt(spanCounter.innerText));
+}
+const tableContainer = document.getElementById("table-content");
+const alphabet =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+function generateTables() {
+  const namelistLength = namelist.length;
+  for (let i = 0; i < determineNumberOfTeams(); i++) {
+    console.log("new table");
+    const column = document.createElement("div");
+    const table = document.createElement("table");
+    tableContainer.appendChild(column);
+    column.appendChild(table);
+    column.classList.add("border", "p-2");
+    const tableHead = document.createElement("thead");
+    table.appendChild(tableHead);
+    const tableHeadRow = document.createElement("tr");
+    tableHead.appendChild(tableHeadRow);
+    const th = document.createElement("th");
+    tableHeadRow.appendChild(th);
+    th.setAttribute("scope", "col");
+    th.innerText = `TEAM ${alphabet[i]}`;
+    const tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    const numberofTeamMembers = Math.round(
+      namelistLength / determineNumberOfTeams()
+    );
+    console.log("numberofteammembers", numberofTeamMembers);
+    for (let j = 0; j < numberofTeamMembers; j++) {
+      if (namelist.length > 0) {
+        console.log(
+          "namelist/determine",
+          Math.floor(namelist.length / determineNumberOfTeams())
+        );
+        const bodyrow = document.createElement("tr");
+        tbody.appendChild(bodyrow);
+        const td = document.createElement("td");
+        bodyrow.appendChild(td);
+        const randomNumber = generateRandomNumber(namelist.length) - 1;
+        console.log("namelist length", namelist.length);
+        console.log("random number", randomNumber);
+        td.innerText =
+          namelist[randomNumber].first_name +
+          " " +
+          namelist[randomNumber].last_name;
+        namelist.splice(randomNumber, 1);
+      }
+    }
+  }
+  if (namelist.length > 0) {
+    const alertDiv = document.createElement("div");
+    const teamsContainer = document.getElementById("teams-container");
+    teamsContainer.appendChild(alertDiv);
+    alertDiv.classList.add("alert", "alert-dark");
+    alertDiv.setAttribute("role", "alert");
+    let text = "";
+    for (let i = 0; i < namelist.length; i++) {
+      text += namelist[i].first_name + " " + namelist[i].last_name + ",";
+    }
+    alertDiv.innerText = `Leftover team members are: ${text}`;
+  }
 
-generateTeamsButton.addEventListener("click", determineNumberOfTeams);
+  //populateNameList();
+}
+
+const spanCounter = document.getElementById("span-counter");
+const addButton = document.getElementById("add");
+const subtractButton = document.getElementById("subtract");
+function handleCounter(event) {
+  if (event.target.id === "subtract") {
+    spanCounter.innerText = parseInt(spanCounter.innerText) - 1;
+  } else if (event.target.id === "add") {
+    spanCounter.innerText = parseInt(spanCounter.innerText) + 1;
+  }
+  if (parseInt(spanCounter.innerText) < 3) {
+    subtractButton.style.visibility = "hidden";
+  } else {
+    subtractButton.style.visibility = "visible";
+  }
+}
+const generateButton = document.getElementById("generate");
+
+addButton.addEventListener("click", handleCounter);
+subtractButton.addEventListener("click", handleCounter);
+generate.addEventListener("click", generateTables);
