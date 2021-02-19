@@ -17,5 +17,10 @@
 
   ### Live demo link
   https://slavko-strive-quiz.netlify.app/
+  
+## W3-D4 (Bootstrap) (Team generator)
+
+  ### Live demo link
+  https://strive-team-generator.netlify.app/
 
 
