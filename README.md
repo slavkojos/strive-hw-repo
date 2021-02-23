@@ -10,7 +10,7 @@
 ## D9-hw (Bingo board)
 
   ### Live demo link
-  slavko-bingo.netlify.app
+  https://slavko-bingo.netlify.app
   
 
 ## D10-benchmark (Quiz app)
