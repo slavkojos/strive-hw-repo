@@ -54,3 +54,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+#mute-svg {
+  height: 30px;
+  filter: invert(100%);
+}

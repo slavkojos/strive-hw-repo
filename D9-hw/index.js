@@ -13,8 +13,10 @@ window.onload = () => {
 };
 function playAudio() {
   const audio = new Audio("ding.mp3");
-  audio.volume = 0.2;
-  audio.play();
+  audio.volume = 0.1;
+  if (isMuted === false) {
+    audio.play();
+  }
 }
 
 let duplicateCounter = 0;
@@ -172,3 +174,10 @@ function checkBoards() {
     checkIfWinner(i);
   }
 }
+
+const muteButton = document.getElementById("mute");
+let isMuted = false;
+
+muteButton.addEventListener("click", function () {
+  isMuted = true;
+});
