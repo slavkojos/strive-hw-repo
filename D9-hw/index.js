@@ -11,6 +11,7 @@ window.onload = () => {
     pickButton.style.visibility = "hidden";
   }
 };
+let isMuted = false;
 function playAudio() {
   const audio = new Audio("ding.mp3");
   audio.volume = 0.1;
@@ -155,7 +156,6 @@ function checkIfWinner(playerIndex) {
   }
 }
 
-const tableFields = document.querySelectorAll();
 function checkBoards() {
   for (let i = 0; i < parseInt(spanCounter.innerText); i++) {
     if (playersArray[i].bingoNumbers.includes(pickedNumber)) {
@@ -176,8 +176,8 @@ function checkBoards() {
 }
 
 const muteButton = document.getElementById("mute");
-let isMuted = false;
 
 muteButton.addEventListener("click", function () {
+  console.log("muted");
   isMuted = true;
 });
