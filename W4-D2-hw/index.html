@@ -17,17 +17,44 @@
   <head>
     <style>
       /*
-            EX1) Write a selector to target the <title> of the page
-            EX2) Write a selector to target every children of the navbar
-            EX3) Write a selector to target the "continue reading..." inside the jumbotron
-            EX4) Write a selector to target the first blogpost
-            EX5) Write a selector to target the "even" links in the navbar
-            EX6) Write a selector to target the last blog post
-            EX7) Write a selector to target all the li into the first ordered-list in the sidebar ( Archives )
-            EX8) Write a selector to target the second post author
-            EX9) Write a selector to target the "back to top" link     #### EXTRA Try doing it without targeting the footer element directly
-            EX10) Write a selector to target the footer
-        */
+                  EX1) Write a selector to target the <title> of the page
+                  EX2) Write a selector to target every children of the navbar
+                  EX3) Write a selector to target the "continue reading..." inside the jumbotron
+                  EX4) Write a selector to target the first blogpost
+                  EX5) Write a selector to target the "even" links in the navbar
+                  EX6) Write a selector to target the last blog post
+                  EX7) Write a selector to target all the li into the first ordered-list in the sidebar ( Archives )
+                  EX8) Write a selector to target the second post author
+                  EX9) Write a selector to target the "back to top" link     #### EXTRA Try doing it without targeting the footer element directly
+                  EX10) Write a selector to target the footer
+              */
+      /* EX 1 */
+      title {
+      }
+      /* EX 2 */
+      /* nav a {
+              background-color:
+            } */
+      /* EX 3 */
+      .jumbotron p > a {
+        background-color: red;
+      }
+      /* EX 4 */
+      .blog-main div:first-of-type {
+        background-color: greenyellow;
+      }
+      /* EX 5 */
+      nav a:nth-child(even) {
+        background-color: blue;
+      }
+      /* EX 6 */
+      .blog-main div:last-of-type {
+        background-color: indigo;
+      }
+      /* EX 7 */
+      .list-unstyled:first-of-type li {
+        background-color: red;
+      }
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
