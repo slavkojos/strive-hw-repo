@@ -8,6 +8,7 @@ window.onload = () => {
     bingoBody.appendChild(bingoField);
     bingoField.classList.add("bingo-field", "mx-1");
     bingoField.innerText = i + 1;
+    pickButton.style.visibility = "hidden";
   }
 };
 function playAudio() {
@@ -17,6 +18,7 @@ function playAudio() {
 }
 
 let duplicateCounter = 0;
+let pickedNumber = 0;
 function pickNumber() {
   const bingoField = document.getElementsByClassName("bingo-field");
   if (pickedNumbers.length < 75) {
@@ -36,6 +38,7 @@ function pickNumber() {
       playAudio();
       console.log("picked number", randomNumber);
       pickedNumbers.push(randomNumber);
+      pickedNumber = randomNumber;
       bingoField[randomNumber - 1].classList.add("selected-number");
     }
   } else {
@@ -46,7 +49,10 @@ function pickNumber() {
 function generateRandomNumber() {
   return Math.floor(Math.random() * (75 - 1 + 1)) + 1;
 }
-pickButton.addEventListener("click", pickNumber);
+pickButton.addEventListener("click", function () {
+  pickNumber();
+  checkBoards();
+});
 
 // code for starting game and generating user boards
 
@@ -81,8 +87,88 @@ startGameButton.addEventListener("click", generateUserBoards);
 
 const userBoards = document.getElementById("user-boards");
 
+let playersArray = [];
+const playerBingoBoardSize = 8;
 function generateUserBoards() {
-  console.log(spanCounter.innerText);
   howManyPlayersContainer.style.display = "none";
+  pickButton.style.visibility = "visible";
   const userBoardsRow = document.getElementById("user-boards-row");
+  for (let i = 0; i < parseInt(spanCounter.innerText); i++) {
+    const playerData = {
+      bingoNumbers: [],
+      score: 0,
+    };
+    playersArray.push(playerData);
+    playersArray[i].playerName = i + 1;
+    console.log("playersArray", playersArray[i].bingoNumbers);
+    const playerColumn = document.createElement("div");
+    userBoardsRow.appendChild(playerColumn);
+    userBoardsRow.classList.add("gx-5", "row-cols-4");
+    playerColumn.classList.add("col", "px-4");
+    const playerTable = document.createElement("table");
+    playerTable.setAttribute(`id`, `table${i + 1}`);
+    playerColumn.appendChild(playerTable);
+    playerTable.classList.add("table", "table-striped");
+    const thead = document.createElement("thead");
+    playerTable.appendChild(thead);
+    const headerRow = document.createElement("tr");
+    thead.appendChild(headerRow);
+    const th = document.createElement("th");
+    headerRow.appendChild(th);
+    th.setAttribute("scope", "col");
+    th.classList.add("fs-3", "text-center");
+    th.innerText = `Player ${i + 1}`;
+    const tbody = document.createElement("tbody");
+    playerTable.appendChild(tbody);
+    const bodyRow = document.createElement("tr");
+    tbody.appendChild(bodyRow);
+    bodyRow.classList.add("row");
+    for (let j = 0; j < playerBingoBoardSize; j++) {
+      const td = document.createElement("td");
+      bodyRow.appendChild(td);
+      td.classList.add("col", "col-3", "border", "p-0", "text-center", "fs-4");
+      let randomNumber = generateRandomNumber();
+      while (playersArray[i].bingoNumbers.includes(randomNumber)) {
+        console.log(`${randomNumber} already exists`);
+        randomNumber = generateRandomNumber();
+      }
+      console.log("pushed", randomNumber);
+      playersArray[i].bingoNumbers.push(randomNumber);
+      td.innerText = randomNumber;
+    }
+    console.log("after j", playersArray);
+  }
+}
+
+function checkIfWinner(playerIndex) {
+  if (playersArray[playerIndex].score === playerBingoBoardSize) {
+    pickButton.style.visibility = "hidden";
+    const audio = new Audio("bingo.mp3");
+    audio.play();
+    //alert(`winner is ${playersArray[playerIndex].playerName}`);
+    const winnerMessage = document.createElement("h1");
+    userBoards.appendChild(winnerMessage);
+    winnerMessage.innerText = `Congratulations to player ${playersArray[playerIndex].playerName}!`;
+    winnerMessage.classList.add("fs-1", "text-uppercase", "fw-bold", "m-4");
+  }
+}
+
+const tableFields = document.querySelectorAll();
+function checkBoards() {
+  for (let i = 0; i < parseInt(spanCounter.innerText); i++) {
+    if (playersArray[i].bingoNumbers.includes(pickedNumber)) {
+      console.log("SCORE + TO PLAYER", playersArray[i].playerName);
+      playersArray[i].score++;
+      const table = document.getElementsByTagName("table");
+      for (let j = 0; j < playerBingoBoardSize; j++) {
+        if (parseInt(table[i].childNodes[1].childNodes[0].childNodes[j].innerText) === pickedNumber) {
+          table[i].childNodes[1].childNodes[0].childNodes[j].classList.add("bg-success", "text-white");
+        }
+      }
+
+      console.log("td-inner", table[i].childNodes[1].childNodes[0].childNodes[0].innerText);
+    }
+
+    checkIfWinner(i);
+  }
 }
