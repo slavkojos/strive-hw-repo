@@ -1,63 +1,56 @@
 #bingo-body {
-    display:flex;
-    height:45%;
-    flex-wrap: wrap;
-    margin:0 auto;
+  display: flex;
+  height: 45%;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
-
-.bingo-board-container {
-    width:40%;
-}
-
-
-
 .bingo-field {
-    text-align: center;
-    display: inline-block;
-    height:50px;
-    width:50px;
-    border-radius: 50%;
-    margin:auto;
-    padding-top:8px;
-    
-    
+  text-align: center;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: auto;
+  padding-top: 8px;
 }
 
 .bingo-field h4 {
-    margin: 0 auto;
-    text-align: center;
-    font-size: 32px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 32px;
 }
 
 @keyframes neon5 {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
-    }
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff9900, 0 0 70px #ff9900, 0 0 80px #ff9900,
+      0 0 100px #ff9900, 0 0 150px #ff9900;
   }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff9900, 0 0 35px #ff9900, 0 0 40px #ff9900,
+      0 0 50px #ff9900, 0 0 75px #ff9900;
+  }
+}
 
-  @-moz-keyframes neon5 {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
-    }
-    to {
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
-    }
+@-moz-keyframes neon5 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff9900, 0 0 70px #ff9900, 0 0 80px #ff9900,
+      0 0 100px #ff9900, 0 0 150px #ff9900;
   }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff9900, 0 0 35px #ff9900, 0 0 40px #ff9900,
+      0 0 50px #ff9900, 0 0 75px #ff9900;
+  }
+}
 
 .selected-number {
-    background-color: #ffc107;
-    color:black;
-    -webkit-animation: neon5 2s ease-in-out 0.1s alternate;
-    -moz-animation: neon5 2s ease-in-out 0.1s alternate;
-    animation: neon5 2s ease-in-out 0.1s alternate;
+  background-color: #ffc107;
+  color: black;
+  -webkit-animation: neon5 2s ease-in-out 0.1s alternate;
+  -moz-animation: neon5 2s ease-in-out 0.1s alternate;
+  animation: neon5 2s ease-in-out 0.1s alternate;
 }
 
 .card-header {
-    display: flex;
-    justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 }
-
-
