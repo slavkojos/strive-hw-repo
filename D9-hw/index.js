@@ -176,8 +176,11 @@ function checkBoards() {
 }
 
 const muteButton = document.getElementById("mute");
+const muteSvg = document.getElementById("mute-svg");
+const unmuteSvg = document.getElementById("unmute-svg");
 
 muteButton.addEventListener("click", function () {
-  console.log("muted");
-  isMuted = true;
+  muteSvg.classList.toggle("d-none");
+  unmuteSvg.classList.toggle("d-none");
+  isMuted === false ? (isMuted = true) : (isMuted = false);
 });
