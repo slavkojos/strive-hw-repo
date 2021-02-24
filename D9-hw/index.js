@@ -143,7 +143,7 @@ function generateUserBoards() {
 
 function checkIfWinner(playerIndex) {
   if (playersArray[playerIndex].score === playerBingoBoardSize) {
-    pickButton.style.visibility = "hidden";
+    pickButton.classList.toggle("d-none");
     const audio = new Audio("bingo.mp3");
     audio.play();
     //alert(`winner is ${playersArray[playerIndex].playerName}`);
