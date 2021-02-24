@@ -8,7 +8,6 @@ window.onload = () => {
     bingoBody.appendChild(bingoField);
     bingoField.classList.add("bingo-field", "mx-1");
     bingoField.innerText = i + 1;
-    pickButton.style.visibility = "hidden";
   }
 };
 let isMuted = false;
@@ -94,7 +93,7 @@ let playersArray = [];
 const playerBingoBoardSize = 8;
 function generateUserBoards() {
   howManyPlayersContainer.style.display = "none";
-  pickButton.style.visibility = "visible";
+  pickButton.classList.toggle("d-none");
   const userBoardsRow = document.getElementById("user-boards-row");
   for (let i = 0; i < parseInt(spanCounter.innerText); i++) {
     const playerData = {
@@ -106,7 +105,7 @@ function generateUserBoards() {
     console.log("playersArray", playersArray[i].bingoNumbers);
     const playerColumn = document.createElement("div");
     userBoardsRow.appendChild(playerColumn);
-    userBoardsRow.classList.add("gx-5", "row-cols-4");
+    userBoardsRow.classList.add("gx-5", "row-cols-lg-4", "row-cols-2");
     playerColumn.classList.add("col", "px-4");
     const playerTable = document.createElement("table");
     playerTable.setAttribute(`id`, `table${i + 1}`);
@@ -139,7 +138,6 @@ function generateUserBoards() {
       playersArray[i].bingoNumbers.push(randomNumber);
       td.innerText = randomNumber;
     }
-    console.log("after j", playersArray);
   }
 }
 
@@ -159,7 +157,6 @@ function checkIfWinner(playerIndex) {
 function checkBoards() {
   for (let i = 0; i < parseInt(spanCounter.innerText); i++) {
     if (playersArray[i].bingoNumbers.includes(pickedNumber)) {
-      console.log("SCORE + TO PLAYER", playersArray[i].playerName);
       playersArray[i].score++;
       const table = document.getElementsByTagName("table");
       for (let j = 0; j < playerBingoBoardSize; j++) {
@@ -167,10 +164,7 @@ function checkBoards() {
           table[i].childNodes[1].childNodes[0].childNodes[j].classList.add("bg-success", "text-white");
         }
       }
-
-      console.log("td-inner", table[i].childNodes[1].childNodes[0].childNodes[0].innerText);
     }
-
     checkIfWinner(i);
   }
 }

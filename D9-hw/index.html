@@ -14,56 +14,58 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <button id="mute" type="button" class="mx-3 btn bg-dark fw-bold position-absolute my-2">
-      <svg
-        id="mute-svg"
-        class="w-6 h-6 d-none"
-        data-darkreader-inline-fill=""
-        data-darkreader-inline-stroke=""
-        fill="none"
-        stroke="currentColor"
-        style="--darkreader-inline-fill: none; --darkreader-inline-stroke: currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-          clip-rule="evenodd"
-        ></path>
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
-        ></path>
-      </svg>
-      <svg
-        id="unmute-svg"
-        class="w-6 h-6"
-        data-darkreader-inline-fill=""
-        data-darkreader-inline-stroke=""
-        fill="none"
-        stroke="currentColor"
-        style="--darkreader-inline-fill: none; --darkreader-inline-stroke: currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-        ></path>
-      </svg>
-    </button>
     <div class="bingo-board-container container py-3 mx-auto mb-5">
       <div class="card text-white bg-danger mb-5">
         <div class="card-header">
           <h1 class="fs-1 fw-bold">BINGO</h1>
-          <button id="pick-button" class="btn btn-warning fw-bold fs-5">PICK NUMBER</button>
+          <div>
+            <button id="mute" type="button" class="mx-3 btn bg-dark fw-bold my-2">
+              <svg
+                id="mute-svg"
+                class="w-6 h-6 d-none"
+                data-darkreader-inline-fill=""
+                data-darkreader-inline-stroke=""
+                fill="none"
+                stroke="currentColor"
+                style="--darkreader-inline-fill: none; --darkreader-inline-stroke: currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                  clip-rule="evenodd"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                ></path>
+              </svg>
+              <svg
+                id="unmute-svg"
+                class="w-6 h-6"
+                data-darkreader-inline-fill=""
+                data-darkreader-inline-stroke=""
+                fill="none"
+                stroke="currentColor"
+                style="--darkreader-inline-fill: none; --darkreader-inline-stroke: currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                ></path>
+              </svg>
+            </button>
+            <button id="pick-button" class="btn btn-warning fw-bold fs-5 d-none">PICK NUMBER</button>
+          </div>
         </div>
         <div id="bingo-body" class="card-body px-5"></div>
       </div>
