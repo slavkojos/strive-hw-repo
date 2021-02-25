@@ -243,19 +243,22 @@ const albumData = [
 
 const allAlbumsRow = document.getElementsByClassName("row")[0];
 allAlbumsRow.classList.add("d-flex", "justify-content-between");
+const genres = ["rock", "classic", "techno", "house", "jazz", "blues", "disco", "pop", "metal", "r&b"];
 
 function populateAllAlbums() {
   for (let i = 0; i < 20; i++) {
     const albumContainer = document.createElement("div");
-    const albumImg = document.createElement("div");
+    const albumImg = document.createElement("img");
     const albumInfo = document.createElement("div");
     const albumAuthor = document.createElement("h5");
+    const albumGenre = document.createElement("span");
 
     //Appending children
     allAlbumsRow.appendChild(albumContainer);
     albumContainer.appendChild(albumImg);
     albumContainer.appendChild(albumInfo);
     albumInfo.appendChild(albumAuthor);
+    albumInfo.appendChild(albumGenre);
 
     //classes
     albumContainer.classList.add(
@@ -265,17 +268,18 @@ function populateAllAlbums() {
       "d-flex",
       "flex-column",
       "align-items-center",
-      "my-3"
+      "my-3",
+      "card"
     );
+    albumImg.classList.add("img-thumbnail");
     albumImg.style.height = "300px";
-    albumImg.classList.add("shadow-lg", "rounded-lg", "container");
-    albumImg.style.backgroundImage = `url(${albumData[i].download_url.slice(
-      0,
-      30
-    )}/300/300.webp)`;
-    albumImg.style.backgroundSize = "cover";
+    albumImg.style.width = "300px";
+    albumImg.setAttribute("src", `${albumData[i].download_url}`);
+    albumGenre.classList.add("badge", "badge-danger");
 
     albumAuthor.innerText = `${albumData[i].author}`;
+    albumGenre.innerText = `${genres[Math.floor(Math.random() * genres.length)]}`;
+    //albumGenre.innerText = "hello";
   }
 }
 
