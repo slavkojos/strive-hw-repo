@@ -1,0 +1,11 @@
+.artist-avatar {
+  height: 20%;
+}
+
+.album-stats::after {
+  content: "-";
+}
+
+.track-id {
+  width: 10%;
+}
