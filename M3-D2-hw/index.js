@@ -28,6 +28,7 @@ window.onload = fetch("https://deezerdevs-deezer.p.rapidapi.com/album/301728", {
     const tracksBody = document.getElementById("tracks-body");
     data.tracks.data.map((elem, index) => {
       const tableRow = document.createElement("tr");
+      tableRow.classList.add("py-2");
       tracksBody.appendChild(tableRow);
       const trackIndex = document.createElement("td");
       tableRow.appendChild(trackIndex);

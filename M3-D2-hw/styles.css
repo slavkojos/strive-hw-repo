@@ -9,3 +9,7 @@
 .track-id {
   width: 10%;
 }
+
+.dark {
+  background-color: rgb(19, 18, 18);
+}
